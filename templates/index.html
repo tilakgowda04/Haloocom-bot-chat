@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Haloo Bot</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, hwb(240 96% 3%), lch(96.57% 2.08 280.72));
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #0a4581, lab(71.87% -3.16 -35.84));
+      color: white;
+      padding: 18px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .chatbox {
+      flex: 1;
+      max-width: 750px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f2f0f0e6;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    .msg {
+      margin: 12px 0;
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 75%;
+      font-size: 16px;
+      line-height: 1.5;
+      animation: fadeIn 0.3s ease-in-out;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .user {
+      background: #3399ff;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bot {
+      background: #f1f5ff;
+      color: #003355;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    #locationDisplay {
+      font-size: 14px;
+      text-align: center;
+      padding: 8px;
+      color: #003366;
+      opacity: 0.8;
+    }
+
+    #inputSection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      background: white;
+      border-top: 1px solid #d0e6ff;
+      position: sticky;
+      bottom: 0;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #inputBox {
+      flex: 1;
+      max-width: 600px;
+      padding: 12px 18px;
+      font-size: 16px;
+      border: 2px solid #cce0ff;
+      border-radius: 25px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    #inputBox:focus {
+      border-color: #3399ff;
+    }
+
+    #sendBtn, #voiceBtn {
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      width: 46px;
+      height: 46px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 3px 8px rgba(51, 153, 255, 0.3);
+    }
+
+    #sendBtn:hover, #voiceBtn:hover {
+      background-color: #1a75d2;
+      transform: scale(1.1);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f2f6ff;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #b3d4ff;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #80b8ff;
+    }
+  </style>
+</head>
+<body>
+  <header>💬 Haloo Bot</header>
+
+  <div class="chatbox" id="chatBox">
+    <!-- Chat messages will appear here -->
+  </div>
+
+  <div id="locationDisplay">📍 Detecting location...</div>
+
+  <div id="inputSection">
+    <input id="inputBox" type="text" placeholder="Ask something..." />
+    <button id="sendBtn">➤</button>
+    <button id="voiceBtn">🎙️</button>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
